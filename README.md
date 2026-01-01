@@ -38,3 +38,19 @@ Core concepts covered:
 4. Using the `child` parameter to optimize performance for static widgets
 5. When and why to use `const` widgets inside animations
 6. Proper disposal of AnimationController to prevent resource leaks
+
+---
+## Class 3: Curves and Smooth Animations
+
+In this class, the focus is on making animations feel natural and human-like by using curves instead of linear animations.
+
+Core concepts covered:
+
+1. Understanding why linear animations feel robotic
+2. Introduction to `Curves` in Flutter
+3. Using `CurvedAnimation` to modify animation timing
+4. How `Curve` maps the controller’s linear progress to a non-linear output
+5. Combining `Tween` with `CurvedAnimation` for smooth motion
+6. Practical examples with `easeIn`, `easeOut`, and `easeInOut` curves
+7. How curves affect perception of speed, acceleration, and deceleration
+8. Best practices for applying curves to multiple animations simultaneously
