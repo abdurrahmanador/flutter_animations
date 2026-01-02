@@ -130,7 +130,58 @@ Core concepts covered:
 - Multiple animations can be synced using one controller.
 - Understanding `AnimationStatus` and enums is crucial for interactive, professional animations.
 
----
+___
 
-This series builds a **solid foundation** for advanced Flutter animations, where you can combine multiple controllers, stagger animations, chain sequences, and create professional, interactive UI motion.
+## Class 6: Staggered and Complex Animations with Interval
 
+Focus: Creating professional staggered animations by controlling *when* each animation runs within a shared timeline.
+
+This class is where animations stop being linear sequences and start behaving like orchestrated motion systems. The goal is to understand how Flutter separates **time** from **values**, and how `Interval` allows multiple animations to run with different delays and overlaps while still using a single controller.
+
+Core concepts covered:
+
+1. **Normalized animation timeline**
+   - `AnimationController` always runs from `0.0 → 1.0`
+   - Duration only controls how long this timeline takes in real time
+   - All animations live inside this normalized range
+
+2. **Understanding Interval**
+   - `Interval(start, end)` defines *which portion* of the controller timeline an animation uses
+   - Values must be between `0.0` and `1.0`
+   - Example: `Interval(0.0, 0.5)` means the animation runs in the first half of the timeline
+
+3. **Staggered animations**
+   - Different properties can start and finish at different times
+   - Example:
+      - Height animates from `0.0 → 0.5`
+      - Width animates from `0.5 → 1.0`
+   - This creates sequential or overlapping motion without multiple controllers
+
+4. **Combining Interval with Curves**
+   - Each animation can have its own curve
+   - Example: height uses `easeIn`, width uses `easeInOut`
+   - Produces natural, non robotic motion
+
+5. **Multiple Tweens, single controller**
+   - One controller drives height, width, and color animations
+   - Keeps animations synchronized and efficient
+   - Avoids unnecessary tickers
+
+6. **AnimationStatus with staggered motion**
+   - Status listeners still work even with Interval based animations
+   - Enables reversible and ping pong staggered effects
+   - Forward and reverse respect the defined intervals
+
+7. **Common mistakes clarified**
+   - Interval values are **not pixels or time**
+   - Interval does not change animation range
+   - Tween controls value range, Interval controls timing window
+
+Key insight:
+
+- Tween defines *what values change*
+- Interval defines *when those values change*
+- Controller duration defines *how fast the entire sequence runs*
+- Curves define *how the motion feels*
+
+This class unlocks the ability to design complex UI motion that feels intentional and professional, without increasing architectural complexity. It prepares the foundation for gesture driven animations, animation chaining, and advanced motion systems used in production apps.

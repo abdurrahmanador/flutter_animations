@@ -3,6 +3,7 @@ import 'package:animations_class_one/class_four.dart';
 import 'package:flutter/material.dart';
 
 import 'class_one.dart';
+import 'class_six.dart';
 import 'class_three.dart';
 import 'class_two.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: AnimationClassFive()
+      home: AnimationClassSix()
     );
   }
 }
