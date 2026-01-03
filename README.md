@@ -185,3 +185,50 @@ Key insight:
 - Curves define *how the motion feels*
 
 This class unlocks the ability to design complex UI motion that feels intentional and professional, without increasing architectural complexity. It prepares the foundation for gesture driven animations, animation chaining, and advanced motion systems used in production apps.
+
+
+---
+## Class 7: Gesture Driven Animations and Direct Control
+
+Focus: Letting the user control animations directly through gestures instead of time.
+
+In this class, the animation system shifts from automatic playback to direct manipulation. The `AnimationController` is no longer treated as a timer, but as a normalized state holder that represents UI progress.
+
+Core concepts covered:
+
+1. **AnimationController as state**
+   - The controller represents UI state between `0.0 → 1.0`
+   - No automatic `.forward()` in `initState`
+
+2. **Gesture driven control**
+   - `GestureDetector` used to listen to drag input
+   - User movement directly updates `controller.value`
+
+3. **Understanding DragUpdateDetails**
+   - `details.primaryDelta` represents incremental finger movement
+   - Used to smoothly map drag distance to animation progress
+
+4. **Delta to animation mapping**
+   - Drag delta (pixels) converted into normalized animation value
+   - Sensitivity tuning using division factor
+
+5. **Clamping for safety**
+   - Controller value clamped between `0.0` and `1.0`
+   - Prevents overflow and invalid animation states
+
+6. **Snap behavior on release**
+   - On drag end, animation completes forward or reverses
+   - Mimics real UI components like drawers and bottom sheets
+
+7. **Performance optimization**
+   - `AnimatedBuilder` used instead of `setState`
+   - Only animated widgets rebuild
+
+Key insight:
+
+- Animations do not have to be time based
+- Gestures can directly control animation state
+- Tween maps state to values, not motion
+- This pattern is the foundation of interactive UI components
+
+This class prepares the ground for physics based animations, velocity handling, and real world gesture driven UI motion.
